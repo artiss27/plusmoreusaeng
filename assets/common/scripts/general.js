@@ -7,4 +7,3 @@ if (window.location.href.indexOf('/admin/myvault/') !== -1) {
     $('select[name="memberid"]').chosen();
   });
 }
-
