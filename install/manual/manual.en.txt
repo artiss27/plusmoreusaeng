@@ -1,0 +1,81 @@
+<a name="top"></a>
+<h2>Installation of MLM Central Manual Mode </h2>  
+<table border=0 width="100%">
+<tbody>
+<tr>
+	<td>
+		<ul>
+			<li><a href="#Step_1._Uncompressing_downloaded_file."><span>Step 1. Uncompressing downloaded file.</span></a> 
+			<li><a href="#Step_2._Uploading_files."><span>Step 2. Uploading files.</span></a> 
+			<li><a href="#Step_3._Creating_database."><span>Step 3. Creating database.</span></a>                        
+			<li><a href="#Step_4._Settings_and_access_rights."><span>Step 4. Settings and access rights.</span></a>                        
+			<li><a href="#Step_5._Running_example_file."><span>Step 5. Running example file.</span></a>
+		</ul>
+	</td>
+</tr>
+</tbody>
+</table>
+
+
+<p>A new installation of MLM Central is a very straight forward process: </p>
+<div style="float:right;">[<a href="#top">top</a>]</div>
+<a name="Step_1._Uncompressing_downloaded_file."></a>
+<h3><b>Step 1. Uncompressing downloaded file.</b></h3>
+<hr>
+<p>Uncompress the provided file in your local hard drive, since this installation guide is manual, proceed to delete install.php and install/ directory, will be no needed is this guide.</p>
+<p><br /></p>
+
+<div style="float:right;">[<a href="#top">top</a>]</div>
+<a name="Step_2._Uploading_files."></a>
+<h3><b>Step 2. Uploading files.</b></h3>
+<hr>
+<p>Using your FTP client, connect to your server using you login and password details, upload all the script files into the home directory in most cases is &quot;public_html/&quot;, you need to install the script on the main directory since it will not work if you try to install on a directory.<br />
+
+  Go On your email you should got your serial key, open the file serial.php and put your serial key in it.</p>
+<p>This serial.php file is a must in the installation process otherwise your will not be able to run the script at all.</p>
+<p>&nbsp;</p>
+<p><br />
+</p>
+
+<div style="float:right;">[<a href="#top">top</a>]</div>
+<a name="Step_3._Creating_database."></a>
+<h3><b>Step 3. Creating database.</b></h3>
+<hr>
+<p>Create a database, a databse user and database password, on cpanel you can do it easily on the mysql databse icons.<br />
+  <br />
+  Open this file: install/sql_dump/create.sql</p>
+<p>Manually change this tags</p>
+<p>&lt;USER_NAME&gt; to your desired Admin username<br />
+&lt;PASSWORD&gt; to your desired Admin password<br />
+&lt;SITEPATH&gt; to the script location full path, example: /home/username/public_html<br />
+&lt;SITEURL&gt; to your installtion site url, example http://www.mlmsite.com</p>
+<p>save the file with other name and upload to your database thru phpmyadmin</p>
+<p><br /></p>
+
+<div style="float:right;">[<a href="#top">top</a>]</div>
+<a name="Step_4._Settings_and_access_rights."></a>
+<h3><b>Step 4. Settings and access rights.</b></h3>
+<hr>
+<p>chmod 777 this directories: <br />
+  <br />
+files/<br />
+banners/<br />
+system/libs/smarty/templates_c/<br />
+system/app/configs</p>
+<p>chmod 777 this file:</p>
+<p>license.txt</p>
+<p>Open and edit this file:</p>
+<p>system/app/configs/database.example.php</p>
+<p>Fill your database information accordly, then save the file to <strong>database.php</strong> and upload to that same location.</p>
+<p><br /></p>
+
+<div style="float:right;">[<a href="#top">top</a>]</div>
+<a name="Step_5._Running_example_file."></a>
+<h3><b>Step 5. Running.</b></h3>
+<hr>
+<p>Point your browser to your url domain and enjoy.</p>
+<p>To login to admin: http://www.yourdomain.com/admin</p>
+<p>To login into user backoffice: http://www.yourdomain.com/members</p>
+<p><br /></p>
+
+Congratulations, you now have MLM Central. Installed!					

@@ -1,0 +1,2 @@
+<?php
+$lang['invoices']                                  = "Invoices";

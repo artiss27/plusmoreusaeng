@@ -1,0 +1,26 @@
+A. Installation Guide:
+
+NOTE: You need to install the script on the main site, will not work on a directory.
+
+1. Unzip the file on your hardisk
+2. Upload all the files to you main site.
+3. Most of the times on Cpanel hosting you are ok with file permissions, in case not do chmod 777 this directories :
+
+a. files/
+b. banners/
+c. system/app/configs
+d. system/libs/smarty/templates_c
+
+4. Get your serial key from https://www.mlmsoftware.one , edit the file serial.php, put the serial you got on your purchase
+
+5. Point your browser to http://www.yourdomain.com/install.php and follow the installation instructions.
+
+6. After succesfull installation delete install.php and install/ directory.
+
+
+You are ready to use the system.
+
+B. Getting Started: 
+
+1. Follow the guides in http://techcorp.freyre.com/Documentation/MLM_Central_Unilevel_Edition/
+

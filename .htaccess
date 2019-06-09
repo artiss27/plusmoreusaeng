@@ -1,0 +1,48 @@
+# Begin cache control #
+ExpiresActive on
+ExpiresDefault "now plus 15 minutes"
+ExpiresByType text/html "now plus 15 minutes"
+<FilesMatch "\.(css|png|bmp|ico|htm|gff|html|js|jpg|jpeg|gif|gcf)$">
+FileETag MTime Size
+ExpiresDefault "now plus 15 minutes"
+</FilesMatch>
+
+
+# End cache control #
+
+
+RewriteEngine On
+#Force www:
+RewriteEngine on
+RewriteCond %{HTTP_HOST} ^example.com [NC]
+RewriteRule ^(.*)$ https://www.plusmoreusaeng.com/site/$1 [L,R=301,NC]
+RewriteRule    ^store/cart/([0-9]+)/([0-9]+)/    /system/app/plugins/cart/shoppingcart_main_inside.php?category=$1&page=$2    [NC,L]
+RewriteRule    ^store/category/([0-9]*)/    /system/app/plugins/cart/shoppingcart_main_inside.php?category=$1    [NC,L]
+RewriteRule    ^store/cart/info/([0-9]*)/    /system/app/plugins/cart/product_sheet_inside.php?id=$1    [NC,L]
+RewriteRule    ^store/cart/    /system/app/plugins/cart/shoppingcart_view_inside.php    [NC,L]
+RewriteRule    ^store/reset/([a-zA-Z0-9]*)/   /system/app/plugins/cart/reset.php?hash=$1    [NC,L]
+RewriteRule    ^store/([a-zA-Z0-9]*)/content/([0-9]*)    /system/app/plugins/cart/content.php?id=$1    [NC,L]
+RewriteRule    ^store/([a-zA-Z0-9]*)/cart/    /system/app/plugins/cart/shoppingcart_view.php    [NC,L]
+RewriteRule    ^store/([a-zA-Z0-9]*)/checkout/    /system/app/plugins/cart/shoppingcart_checkout.php    [NC,L]
+RewriteRule    ^store/([a-zA-Z0-9]*)/logout   /system/app/plugins/cart/logout.php    [NC,L]
+RewriteRule    ^store/([a-zA-Z0-9]*)/login   /system/app/plugins/cart/login.php    [NC,L]
+RewriteRule    ^store/([a-zA-Z0-9]*)/register   /system/app/plugins/cart/register_login.php    [NC,L]
+RewriteRule    ^store/([a-zA-Z0-9]*)/profile   /system/app/plugins/cart/profile.php    [NC,L]
+RewriteRule    ^store/([a-zA-Z0-9]*)/orders   /system/app/plugins/cart/orders.php    [NC,L]
+RewriteRule    ^store/([a-zA-Z0-9]*)/info/([0-9]*)/    /system/app/plugins/cart/product_sheet.php?id=$2    [NC,L]
+RewriteRule    ^store/([a-zA-Z0-9]*)/category/([0-9]*)/    /system/app/plugins/cart/shoppingcart_main.php?category=$2    [NC,L]
+RewriteRule    ^store/([a-zA-Z0-9]+)/([0-9]+)/([0-9]+)/    /system/app/plugins/cart/shoppingcart_main.php?associate=$1&category=$2&page=$3    [NC,L]
+RewriteRule    ^store/([a-zA-Z0-9]+)    /system/app/plugins/cart/shoppingcart_main.php?associate=$1    [NC,L]
+RewriteCond %{REQUEST_URI} !^site
+RewriteCond %{REQUEST_FILENAME} !-f
+RewriteCond %{REQUEST_FILENAME} !-d
+RewriteRule ^(.*)$ /index.php?/$1 [L]
+ServerSignature Off
+<files *.tpl>
+order allow,deny
+deny from all
+</files>
+<Files ~ "serial.txt$">
+Order allow,deny
+Deny from all
+</Files>

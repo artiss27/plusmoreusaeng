@@ -1,0 +1,12 @@
+Removed Pay-it-forward system
+Added ePins system
+Added Withdrawal settings
+Added API payment thru paymentprocessors
+Added Profile image management
+Fixes applied on reported minor issues
+
+Added Admin Users
+Admin settings bug fix demo mode
+Memberships with multiple words accepted
+Member edit bug fix sql error
+

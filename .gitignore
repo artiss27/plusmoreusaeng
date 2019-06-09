@@ -1,0 +1,9 @@
+node_modules
+.idea
+.git
+.DS_Store
+vendor/
+uploads/
+logs/
+cache/
+package-lock.json
