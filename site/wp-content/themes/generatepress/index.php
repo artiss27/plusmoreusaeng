@@ -14,7 +14,7 @@
 if ( ! defined( 'ABSPATH' ) ) {
 	exit; // Exit if accessed directly.
 }
-
+//var_dump(2222); die();
 get_header(); ?>
 
 	<div id="primary" <?php generate_do_element_classes( 'content' ); ?>>
