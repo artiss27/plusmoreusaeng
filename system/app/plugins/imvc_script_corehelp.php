@@ -888,7 +888,7 @@ class CoreHelp
 	
 	public static function getMemberProfilePic($memberId, $gender) {
 		if (file_exists(__DIR__ . '/../../../media/avatars/thumb/'.$memberId.'.jpg')) {
-			return '/media/avatars/thumb/'.$memberId.'.jpg?'.rand(100,1000);;
+			return '/media/avatars/thumb/'.$memberId.'.jpg?'.rand(100,1000);
 		}
 		else {
 			$g = $gender == 1 || $gender == 'Man' ? 'man' : 'woman';
@@ -921,5 +921,20 @@ class CoreHelp
 			return $output;
 		}
 	}
+
+    public static function getSelectMembers($value = [], $page = '')
+    {
+        $value = (!empty($value) ? $value : (!empty($_COOKIE['reflink']) && $page === 'register' ? $_COOKIE['reflink'] : ''));
+        $str = '';
+        $members = \tmvc::instance()->controller->core->db->query("SELECT member_id, username, first_name, last_name FROM members");
+        $str .= '<select name="sponsor" class="form-control" '.(!empty($value) && $page === 'register' ? 'disabled' : '').'>';
+        foreach ($members as $v) {
+            $str .= '<option value="' . $v['username'] . '" ' . ($v['username'] == $value ? 'selected' : '') . '>' . $v['first_name'] . ' ' . $v['last_name'] . '</option>';
+        }
+        $str .= '</select>';
+
+        return $str;
+    }
 }
+
 ?>

@@ -106,7 +106,11 @@
 
                             <div class="form-group">
                                 <label class="control-label" for="username"><font size="3">Invited By*</font><br><font size="2">Invitado Por*</font></label>
-                                <input type="text" placeholder="{$lang.your_sponsor_username}" {if $hooks->apply_filters('get_setting', 'signup_sponsor_required') == 'yes'}required{/if} value="{if isset($smarty.session.signup.sponsor)}{$smarty.session.signup.sponsor}{else}{$smarty.session.enroller}{/if}" name="sponsor" class="form-control" >                                
+
+                              {assign var=members value=CoreHelp::getSelectMembers('', 'register')}
+                              {$members}
+
+<!--                                <input type="text" placeholder="{$lang.your_sponsor_username}" {if $hooks->apply_filters('get_setting', 'signup_sponsor_required') == 'yes'}required{/if} value="{if isset($smarty.session.signup.sponsor)}{$smarty.session.signup.sponsor}{else}{$smarty.session.enroller}{/if}" name="sponsor" class="form-control" >                                -->
                             </div>
                             
                             <div class="form-group">

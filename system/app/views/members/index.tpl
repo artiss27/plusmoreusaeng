@@ -40,7 +40,10 @@
                <div class="panel-body">
                   <div class="text-muted">
                      <div class="form-inline">
-                        {if $smarty.session.plan.cycler == 1 && $membership == $lang.free_membership}<strong>Upgrade your membership to earn more!</strong>{else}<BR><center><input type="text" class="form-control" value="{$smarty.session.local_url}?u={$smarty.session.username}" style="width:60%"><br><font size="4">Invita a otros usando tu enlace directo:</font><BR>
+                        {if $smarty.session.plan.cycler == 1 && $membership == $lang.free_membership}<strong>Upgrade your membership to earn more!</strong>{else}<BR><center>
+                         <input type="text" class="form-control" value="{$smarty.session.local_url}site/{$smarty.session.username}" style="width:60%">
+<!--                         <input type="text" class="form-control" value="{$smarty.session.local_url}?u={$smarty.session.username}" style="width:60%">-->
+                         <br><font size="4">Invita a otros usando tu enlace directo:</font><BR>
 <font size="2" color="green">INVITE OTHERS USING YOUR DIRECT LINK:</font></center><br>
 
 <!--<font style=with:60%"><center>PARA SER EL PROMOTOR DE OTROS QUE SE REGISTREN GRATIS Y OBTENER COMISIONES CUANDO ESTOS OBTIENEN SERVICIOS DE PLUSMOREUSA<br> COPIA Y PEGA ESTE ENLACE EN TUS COMUNICACIONES Y APARECERAS COMO QUIEN LOS INVITO</font><br><BR></font><br><center><font size="4" color="black">SI QUIERES SABER MÁS CÓMO CONVERTIR TU MEMBRESÍA EN UN NEGOCIO LUCRATIVO</center></font><BR><font size="4" color="black">Click </font><a href="https://www.plusmoreusaeng.com/site/business"><font size="3" color="red">Here </font></a><font size="4" color="black"> to Learn More </center></font>-->{/if}

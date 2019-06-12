@@ -1,4 +1,6 @@
 <?php
+require get_template_directory() . '/custom/referal-link.php';
+
 /**
  * The template for displaying 404 pages (Not Found).
  *
