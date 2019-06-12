@@ -1,5 +1,5 @@
 <?php
-if (defined('REFERAL_ID')) return;
+if (!empty($_GET['SPONSOR_ID'])) return;
 /**
  * The Sidebar containing the main widget areas.
  *
