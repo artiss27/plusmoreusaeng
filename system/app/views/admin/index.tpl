@@ -32,6 +32,19 @@
 				</p>
 			</div>
 		</div>
+    <form class="form-horizontal" action="" method="get" id="date-renge">
+      <div class="form-group row">
+        <label class="col-sm-2 control-label">Date start</label>
+        <div class="col-sm-3">
+          <input type="date" class="form-control date-range" value="{$data.start}" name="start">
+        </div>
+        <label class="col-sm-2 control-label">Date end</label>
+        <div class="col-sm-3">
+          <input type="date" class="form-control date-range" value="{$data.end}" name="end">
+        </div>
+        <a href="/admin/" class="col-sm-2 btn btn-primary" style="margin-top: 0">reset</a>
+      </div>
+    </form>
 		<div class="row">
 			<div class="col-lg-12">
 				<div class="hpanel">

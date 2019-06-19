@@ -27,4 +27,4 @@
 <script src="/assets/common/vendor/jQuery-Validation-Engine-master/js/jquery.validationEngine.js" type="text/javascript" charset="utf-8"></script>
 <!-- App scripts -->
 <script src="/assets/common/scripts/homer.js"></script>
-<script src="/assets/common/scripts/general.js"></script>
+<script src="/assets/common/scripts/general.js?v=4"></script>

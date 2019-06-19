@@ -8,19 +8,34 @@ class Admin_Controller extends iMVC_Controller
         $this->admin->CheckLogin();
         $this->smarty->template_dir = 'system/app/views/admin/';
 
+        $parts = parse_url($_SERVER['REQUEST_URI']);
+        parse_str($parts['query'], $query);
+        $data['start'] = (!empty($query['start']) ? $query['start'] : '');
+        $data['end'] = (!empty($query['end']) ? $query['end'] : '');
+        $wereDate = (!empty($data['start']) ? " WHERE date >= '" . $data['start'] . "'" : "");
+        $wereDate .= (!empty($data['end']) ? (!$wereDate ? ' WHERE' : ' AND') . " date <= '" . $data['end'] . "'" : "");
+        $wereDateU = (!empty($data['start']) ? " AND reg_date >= '" . strtotime($data['start']) . "'" : "");
+        $wereDateU .= (!empty($data['end']) ? " AND reg_date <= '" . strtotime($data['end']) . "'" : "");
+        function str_replace_once($search, $replace, $text)
+        {
+            $pos = strpos($text, $search);
+            return $pos!==false ? substr_replace($text, $replace, $pos, strlen($search)) : $text;
+        }
+
         $data['total_members'] = $this->core->FirstField("SELECT COUNT(*) FROM members", 0);
         $data['new_members_today'] = $this->core->FirstField("SELECT COUNT(*) FROM members WHERE reg_date > UNIX_TIMESTAMP(DATE_SUB( NOW(), INTERVAL 1 DAY ))", 0);
-        $data['total_paid_members'] = $this->core->FirstField("SELECT COUNT(*) FROM members WHERE membership != '0'", 0);
+        $data['total_paid_members'] = $this->core->FirstField("SELECT COUNT(*) FROM members WHERE membership != '0'" . $wereDateU, 0);
+//        var_dump($data['total_paid_members']);die();
         $data['paid_members_today'] = $this->core->FirstField("SELECT COUNT(*) FROM entrypayment WHERE date > UNIX_TIMESTAMP(DATE_SUB( NOW(), INTERVAL 1 DAY ))", 0);
         $data['paid_members_yesterday'] = $this->core->FirstField("SELECT COUNT(*) FROM entrypayment WHERE date BETWEEN UNIX_TIMESTAMP(DATE_SUB(NOW(), INTERVAL 2 DAY)) AND UNIX_TIMESTAMP(DATE_SUB(NOW(), INTERVAL 1 DAY))", 0);
         $data['paid_members_this_month'] = $this->core->FirstField("SELECT COUNT(*) FROM entrypayment WHERE YEAR(FROM_UNIXTIME(date)) = YEAR(CURRENT_DATE) AND MONTH(FROM_UNIXTIME(date)) = MONTH(CURRENT_DATE)", 0);
         $data['paid_members_last_month'] = $this->core->FirstField("SELECT COUNT(*) FROM entrypayment WHERE YEAR(FROM_UNIXTIME(date)) = YEAR(CURRENT_DATE - INTERVAL 1 MONTH) AND MONTH(FROM_UNIXTIME(date)) = MONTH(CURRENT_DATE - INTERVAL 1 MONTH)", 0);
-        $data['visits_total'] = $this->core->FirstField("SELECT COUNT(*) FROM visitors", 0);
+        $data['visits_total'] = $this->core->FirstField("SELECT COUNT(*) FROM visitors" . $wereDate, 0);
         $data['visits_today'] = $this->core->FirstField("SELECT COUNT(*) FROM visitors WHERE date > DATE_SUB( NOW(), INTERVAL 1 DAY )", 0);
         $data['visits_yesterday'] = $this->core->FirstField("SELECT COUNT(*) FROM visitors WHERE date BETWEEN DATE_SUB(NOW(), INTERVAL 2 DAY) AND DATE_SUB(NOW(), INTERVAL 1 DAY)", 0);
         $data['visits_this_month'] = $this->core->FirstField("SELECT COUNT(*) FROM visitors WHERE YEAR(date) = YEAR(CURRENT_DATE) AND MONTH(date) = MONTH(CURRENT_DATE)", 0);
         $data['visits_last_month'] = $this->core->FirstField("SELECT COUNT(*) FROM visitors WHERE YEAR(date) = YEAR(CURRENT_DATE - INTERVAL 1 MONTH) AND MONTH(date) = MONTH(CURRENT_DATE - INTERVAL 1 MONTH)", 0);
-        $data['registered_total'] = $this->core->FirstField("SELECT COUNT(*) FROM members", 0);
+        $data['registered_total'] = $this->core->FirstField("SELECT COUNT(*) FROM members" . ($wereDateU ? str_replace_once('AND', 'WHERE', $wereDateU) : ''), 0);
         $data['registered_today'] = $this->core->FirstField("SELECT COUNT(*) FROM members WHERE reg_date > UNIX_TIMESTAMP(DATE_SUB( NOW(), INTERVAL 1 DAY ))", 0);
         $data['registered_yesterday'] = $this->core->FirstField("SELECT COUNT(*) FROM members WHERE reg_date BETWEEN UNIX_TIMESTAMP(DATE_SUB(NOW(), INTERVAL 2 DAY)) AND UNIX_TIMESTAMP(DATE_SUB(NOW(), INTERVAL 1 DAY))", 0);
         $data['registered_this_month'] = $this->core->FirstField("SELECT COUNT(*) FROM members WHERE YEAR(FROM_UNIXTIME(reg_date)) = YEAR(CURRENT_DATE) AND MONTH(FROM_UNIXTIME(reg_date)) = MONTH(CURRENT_DATE)", 0);
@@ -687,15 +702,14 @@ class Admin_Controller extends iMVC_Controller
 
     public function postMembers()
     {
-
         $this->smarty->template_dir = 'system/app/views/admin/';
 
         $this->admin->CheckLogin();
         $this->admin->obj = 'members';
         $this->admin->orderDefault = 'member_id';
         $this->admin->RestoreState();
-        $memberships = $this->admin->GetMemberships();
 
+        $memberships = $this->admin->GetMemberships();
 
         $searchList = array(
             'Search parameter..' => '',
@@ -778,7 +792,7 @@ class Admin_Controller extends iMVC_Controller
             'HEAD_ACTIVE' => $this->admin->Header_GetSortLink('is_active', 'Active'),
             'HEAD_MATRIXES' => $h_m,
             'ALL_COL' => $a_c,
-            'PAGINATION' => $this->admin->Pages_GetLinks($total, $this->admin->siteUrl . 'admin/members/&')
+            'PAGINATION' => $this->admin->Pages_GetLinks($total, $this->admin->siteUrl . 'admin/members/&'),
         );
         if ($total > 0) {
             if (!isset($this->admin->orderBy)) {
@@ -1106,7 +1120,7 @@ class Admin_Controller extends iMVC_Controller
                 'first_name' => $firstName,
                 'last_name' => $lastName,
                 'sponsor_id' => $sponsor_id,
-                'reg_date' => $regdate,
+//                'reg_date' => $regdate,
                 'is_active' => '1',
                 'street' => $street,
                 'city' => $city,

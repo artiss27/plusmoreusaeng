@@ -1104,7 +1104,7 @@ class Admin_Controller extends iMVC_Controller
 				'first_name' => $firstName,
 				'last_name' => $lastName,
 				'sponsor_id' => $sponsor_id,
-				'reg_date' => $regdate,
+//				'reg_date' => $regdate,
 				'is_active' => '1',
 				'street' => $street,
 				'city' => $city,

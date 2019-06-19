@@ -85,6 +85,23 @@
                                     </div>
                                  </div>
                               </form>
+<!--                             <div class="col-sm-12">-->
+<!--                               <form class="form-horizontal" action="" method="get" id="date-renge">-->
+<!--                                 <div class="form-group row">-->
+<!--                                   <label class="col-sm-2 control-label">Date of reg. from</label>-->
+<!--                                   <div class="col-sm-3">-->
+<!--                                     <input type="date" class="form-control date-range" value="{$header.DATE_START}"-->
+<!--                                            name="start">-->
+<!--                                   </div>-->
+<!--                                   <label class="col-sm-2 control-label">Date of reg. to</label>-->
+<!--                                   <div class="col-sm-3">-->
+<!--                                     <input type="date" class="form-control date-range" value="{$header.DATE_START}"-->
+<!--                                            name="end">-->
+<!--                                   </div>-->
+<!--                                   <a href="/admin/members/" class="col-sm-2 btn btn-primary" style="margin-top: 0">reset</a>-->
+<!--                                 </div>-->
+<!--                               </form>-->
+<!--                             </div>-->
                            </td>
                         </tr>
                      </table>
