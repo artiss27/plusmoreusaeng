@@ -32,7 +32,8 @@ add_filter('pre_get_document_title', function ($title) {
 ob_start();
 get_header();
 $header = ob_get_clean();
-preg_match('/<img.+src="(.+whitePMULOGO.+)".+class="(.+)"/Ui', $header, $matches);
+//preg_match('/<img.+src="(.+whitePMULOGO.+)".+class="(.+)"/Ui', $header, $matches);
+preg_match('/<img.+src="(.+)".+class="(.+)"/Ui', $header, $matches);
 if (isset($matches[1], $matches[2])) {
     $header = str_replace($matches[1], "/media/avatars/normal/" . (int)$_GET['SPONSOR_ID'] . ".jpg", $header);
     $header = str_replace($matches[2], $matches[2] . ' referal-logo', $header);
@@ -46,7 +47,7 @@ echo $header; ?>
 
     .referal-logo {
       border-radius: 50% !important;
-      max-width: 75% !important;
+      max-width: 35% !important;
     }
   </style>
   <div id="primary">
