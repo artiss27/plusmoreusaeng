@@ -113,6 +113,7 @@
                            <th>{$header.HEAD_USERNAME}</th>
                            <th>{$header.HEAD_FIRST_NAME}</th>
                            <th>{$header.HEAD_LAST_NAME}</th>
+                           <th>RANK</th>
                            <th>{$header.HEAD_EMAIL}</th>
                            <th>{$header.HEAD_SPONSOR}</th>
                            <th>{$header.HEAD_LEVEL}</th>
@@ -123,12 +124,13 @@
                         </tr>
                      </thead>
                      <tbody>
-                        {foreach key=obj item=name from=$members}                        
+                        {foreach key=obj item=name from=$members}
                         <tr>
                            <td>{$name.ROW_MEMBER_ID}</td>
                            <td>{$name.ROW_USERNAME}</td>
                            <td>{$name.ROW_FIRST_NAME}</td>
                            <td>{$name.ROW_LAST_NAME}</td>
+                           <td>{$name.ROW_RANK}</td>
                            <td><a href="{$name.ROW_EMAIL}">{$name.ROW_EMAIL}</a>&nbsp;</td>
                            <td>{$name.ROW_SPONSOR}</td>
                            <td>{$name.ROW_LEVEL}</td>

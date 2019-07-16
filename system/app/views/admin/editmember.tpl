@@ -140,6 +140,18 @@
                                                             </td>
                                                          </tr>
                                                          <tr>
+                                                           <td><b>Agent ID : </b></td>
+                                                           <td><input type="text" name="agent" value="{$member.agent_id}" maxlength="12" class="form-control" />
+                                                             &nbsp; <span class="error"></span>
+                                                           </td>
+                                                         </tr>
+                                                         <tr>
+                                                           <td><b>Manager ID : </b></td>
+                                                           <td><input type="text" name="manager" value="{$member.manager_id}" maxlength="12" class="form-control" />
+                                                             &nbsp; <span class="error"></span>
+                                                           </td>
+                                                         </tr>
+                                                         <tr>
                                                             <td><b>Membership :</b></td>
                                                             <td><input type="text" name="membership" value="{$member.membership|replace:"_":" "}" maxlength="12" class="form-control" />
                                                                &nbsp; <span class="error"></span>

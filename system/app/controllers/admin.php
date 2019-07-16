@@ -19,7 +19,7 @@ class Admin_Controller extends iMVC_Controller
         function str_replace_once($search, $replace, $text)
         {
             $pos = strpos($text, $search);
-            return $pos!==false ? substr_replace($text, $replace, $pos, strlen($search)) : $text;
+            return $pos !== false ? substr_replace($text, $replace, $pos, strlen($search)) : $text;
         }
 
         $data['total_members'] = $this->core->FirstField("SELECT COUNT(*) FROM members", 0);
@@ -658,6 +658,8 @@ class Admin_Controller extends iMVC_Controller
                         $status = 'Paid';
                     }
                 }
+                \tmvc::instance()->controller->load->plugin_model('Ranks_Model', 'ranks');
+                $rank_data = \tmvc::instance()->controller->ranks->getRankData($member_id);
                 $this->data['TABLE_ROW'][] = array(
                     'ROW_MEMBER_ID' => $member_id,
                     'ROW_FIRST_NAME' => $firstname,
@@ -673,7 +675,8 @@ class Admin_Controller extends iMVC_Controller
                     'SEND_WELCOME' => $sendwelcome,
                     'ROW_PAYLINK' => $payLink,
                     'ROW_USERNAME' => $username,
-                    'ROW_ACTIVE' => $active
+                    'ROW_ACTIVE' => $active,
+                    'ROW_RANK' => $rank_data['current_rank'],
                 );
             }
         }
@@ -1081,6 +1084,8 @@ class Admin_Controller extends iMVC_Controller
         $username = $this->admin->enc(CoreHelp::GetValidQuery('username', 'Username', VALIDATE_USERNAME));
         $password = strlen(CoreHelp::GetQuery('password')) > 0 ? CoreHelp::GetValidQuery('password', 'Password', VALIDATE_PASSWORD) : $member['password'];
         $sponsor = CoreHelp::GetQuery('sponsor', 1);
+        $agent = CoreHelp::GetQuery('agent', 0);
+        $manager = CoreHelp::GetQuery('manager', 0);
         $street = $this->admin->enc(CoreHelp::GetQuery('street', '--'));
         $city = $this->admin->enc(CoreHelp::GetQuery('city', '--'));
         $state = $this->admin->enc(CoreHelp::GetQuery('state', '--'));
@@ -1120,6 +1125,8 @@ class Admin_Controller extends iMVC_Controller
                 'first_name' => $firstName,
                 'last_name' => $lastName,
                 'sponsor_id' => $sponsor_id,
+                'agent_id' => (int)$agent,
+                'manager_id' => (int)$manager,
 //                'reg_date' => $regdate,
                 'is_active' => '1',
                 'street' => $street,

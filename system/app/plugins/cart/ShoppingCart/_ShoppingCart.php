@@ -711,6 +711,19 @@ function payUplineUnilevel($member, $commissionable, $invoice)
     $depthCounter = 0;
     $referrerId = $member['sponsor_id'];
     $i = 0;
+
+    // add comission for agent and manager
+    $commision = number_format($_SESSION['settings']['settings_cart_level_MANAGER_1'] * $commissionable / 100, 2, '.', '');
+    $Db->query("INSERT INTO wallet_payout (amount, transaction_type, from_id, to_id, transaction_date, descr) 
+				VALUES ('" . $commision . "', '5', '" . $member['member_id'] . "', '" . $member['manager_id'] . "', '" . time() . "', 'MANAGER Commission From " . $member['username'] . "' )");
+
+    $commision = number_format($_SESSION['settings']['settings_cart_level_AGENT_1'] * $commissionable / 100, 2, '.', '');
+    $Db->query("INSERT INTO wallet_payout (amount, transaction_type, from_id, to_id, transaction_date, descr) 
+				VALUES ('" . $commision . "', '5', '" . $member['member_id'] . "', '" . $member['agent_id'] . "', '" . time() . "', 'AGENT Commission From " . $member['username'] . "' )");
+
+    // set RANK = MEMBERSHIP
+    setMembership($member['member_id']);
+
     while ($depthCounter <= $depth) {
         $i++;
         if ($i > 120) {
@@ -735,10 +748,25 @@ function payUplineUnilevel($member, $commissionable, $invoice)
                 $commision = number_format($_SESSION['settings']['settings_cart_level_' . $uplineMember['membership'] . '_' . $depthCounter] * $commissionable / 100, 2, '.', '');
                 $Db->query("INSERT INTO wallet_payout (amount, transaction_type, from_id, to_id, transaction_date, descr) 
 				VALUES ('" . $commision . "', '5', '" . $member['member_id'] . "', '" . $uplineMember['member_id'] . "', '" . time() . "', 'Store Unilevel Commission From Sale on Level " . $depthCounter . " (Invoice: " . $invoice . ") on " . $member['username'] . " Store' )");
+
+                setMembership($uplineMember['member_id']);
             }
             //}
         }
         $referrerId = $uplineMember['sponsor_id'];
+    }
+}
+
+function setMembership($user_id) {
+    $Db = eden('mysql', EW_CONN_HOST, EW_CONN_DB, EW_CONN_USER, EW_CONN_PASS); //instantiate
+    $Db->query("SET NAMES 'utf8'"); // formating to utf8
+    set_time_limit(60);
+    ignore_user_abort(1);
+    \tmvc::instance()->controller->load->plugin_model('Ranks_Model', 'ranks');
+    $rank_data = \tmvc::instance()->controller->ranks->getRankData($user_id);
+    $user = $Db->getRow('members', 'member_id', $user_id);
+    if ($rank_data['current_rank'] !== $user['membership']) {
+        $Db->query("UPDATE members SET membership = '" . $rank_data['current_rank'] . "' WHERE member_id = " . (int)$user_id);
     }
 }
 
