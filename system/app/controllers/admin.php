@@ -553,7 +553,9 @@ class Admin_Controller extends iMVC_Controller
             'Country' => 'country',
             'Postal Code' => 'postal',
             'Phone' => 'phone',
-            'Sponsor ID' => 'sponsor_id'
+            'Sponsor ID' => 'sponsor_id',
+            'Manager ID' => 'manager_id',
+            'Agent ID' => 'agent_id',
         );
 
         $filterDateBegin = $this->admin->GetStateValue('filterDateBegin', 0);
@@ -562,7 +564,8 @@ class Admin_Controller extends iMVC_Controller
         $s_line = $this->admin->GetStateValue('s_line', '');
         if ($s_field != '' AND $s_line != '') {
             if (count($_GET) > 1) {
-                $sql_select .= ($s_field != 'member_id') ? " AND $s_field LIKE '%$s_line%'" : " AND $s_field='" . CoreHelp::sanitizeSQL($s_line) . "'";
+                $noLike = ['member_id', 'sponsor_id', 'manager_id', 'agent_id'];
+                $sql_select .= (!in_array($s_field, $noLike)) ? " AND $s_field LIKE '%$s_line%'" : " AND $s_field='" . CoreHelp::sanitizeSQL($s_line) . "'";
             } else {
                 $this->admin->SaveStateValue('s_line', '');
                 $this->admin->SaveStateValue('s_field', '');
@@ -728,7 +731,9 @@ class Admin_Controller extends iMVC_Controller
             'Country' => 'country',
             'Postal Code' => 'postal',
             'Phone' => 'phone',
-            'Sponsor ID' => 'sponsor_id'
+            'Sponsor ID' => 'sponsor_id',
+            'Manager ID' => 'manager_id',
+            'Agent ID' => 'agent_id',
         );
 
         $s_line = $this->admin->enc(CoreHelp::GetQuery('s_line', ''));
@@ -749,7 +754,8 @@ class Admin_Controller extends iMVC_Controller
         $s_field = $this->admin->GetStateValue('s_field', '');
         $s_line = $this->admin->GetStateValue('s_line', '');
         if ($s_field != '' AND $s_line != '') {
-            $sql_select .= ($s_field != 'member_id') ? " AND $s_field LIKE '%$s_line%'" : " AND $s_field='" . CoreHelp::sanitizeSQL($s_line) . "'";
+            $noLike = ['member_id', 'sponsor_id', 'manager_id', 'agent_id'];
+            $sql_select .= (!in_array($s_field, $noLike)) ? " AND $s_field LIKE '%$s_line%'" : " AND $s_field='" . CoreHelp::sanitizeSQL($s_line) . "'";
         }
         $filterDateDayBegin = ($filterDateBegin != 0) ? date('d', $filterDateBegin) : '';
         $filterDateMonthBegin = ($filterDateBegin != 0) ? date('m', $filterDateBegin) : '';
@@ -836,6 +842,8 @@ class Admin_Controller extends iMVC_Controller
                 } else {
                     $status = 'Paid';
                 }
+                \tmvc::instance()->controller->load->plugin_model('Ranks_Model', 'ranks');
+                $rank_data = \tmvc::instance()->controller->ranks->getRankData($member_id);
                 $this->data['TABLE_ROW'][] = array(
                     'ROW_MEMBER_ID' => $member_id,
                     'ROW_FIRST_NAME' => $firstname,
@@ -851,7 +859,8 @@ class Admin_Controller extends iMVC_Controller
                     'SEND_WELCOME' => $sendwelcome,
                     'ROW_PAYLINK' => $payLink,
                     'ROW_USERNAME' => $username,
-                    'ROW_ACTIVE' => $active
+                    'ROW_ACTIVE' => $active,
+                    'ROW_RANK' => $rank_data['current_rank'],
                 );
             }
         }

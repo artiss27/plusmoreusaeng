@@ -54,7 +54,7 @@
          </div>
       </div>
       
-  <!-- {$hooks->do_action('extra_dashboard_head')}-->
+   {$hooks->do_action('extra_dashboard_head')}
       
       <div class="hpanel forum-box">
          <div class="panel-heading">

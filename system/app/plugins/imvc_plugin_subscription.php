@@ -25,6 +25,7 @@ function setFakeCron()
 
 function setActionExtraDashboardHead()
 {
+    return; // disabled
 	$lang = \CoreHelp::getLang('members');
 	$lang_plugin = \CoreHelp::getLangPlugin('members', 'subscription');
 	$db    = \tmvc::instance()->controller->load->database();

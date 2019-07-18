@@ -73,6 +73,7 @@ function setActionExtraMemberMenus()
 
 function setActionExtraDashboardHead()
 {
+    return; // disable
 	$cart_type = \tmvc::instance()->controller->core->GetSiteSetting('settings_cart_type');
 	if($cart_type == 'replicated' || $cart_type == 'both') {
 		echo '<div class="row" >

@@ -56,6 +56,7 @@ function payUpline($memberId, $amount, $membership) {
 
 function setActionExtraDashboardHead()
 {
+    return //disabled
 	$lang = \CoreHelp::getLangPlugin('members', 'unilevel');
 	$db    = \tmvc::instance()->controller->load->database();
 	$row = $db->queryFirstRow("SELECT * FROM settings WHERE keyname = 'settings_qualification_required'");

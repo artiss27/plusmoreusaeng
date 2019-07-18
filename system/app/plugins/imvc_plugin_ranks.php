@@ -24,16 +24,18 @@ function setFilterPayPlan($array)
 }
 
 function setActionExtraDashboardHead()
-{	
-		\tmvc::instance()->controller->load->plugin_model('Ranks_Model', 'ranks');
-		$rank_data = \tmvc::instance()->controller->ranks->getRankData($_SESSION['member_id']);		
-		echo '<div class="row" >
+{
+    \tmvc::instance()->controller->load->plugin_model('Ranks_Model', 'ranks');
+    $rank_data = \tmvc::instance()->controller->ranks->getRankData($_SESSION['member_id']);
+    echo '<div class="row" >
 			 <div class="col-lg-12">
 				<div class="hpanel">
 				   <div class="panel-body">
 					  <div class="text-muted">
 						 <div class="form-inline">
-							<strong>Your Rank is: &nbsp;&nbsp;<button class="btn btn-warning" style="margin-top: 0px; margin-bottom: 0px;"><strong>' . $rank_data['current_rank']. '</strong></button> &nbsp;&nbsp;&nbsp;<img style="margin-bottom:5px;" width="40" src="/media/images/'.$rank_data['current_rank_image'].'" /> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Paid Referrals: &nbsp;&nbsp;<button class="btn btn-warning" style="margin-top: 0px; margin-bottom: 0px;"><strong>'.$rank_data['paid_referrals'].'</strong></button>  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Personal Volume: &nbsp;&nbsp;<button class="btn btn-warning" style="margin-top: 0px; margin-bottom: 0px;"><strong>'.$rank_data['personal_volume'].'</strong></button>   &nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Group Volume: &nbsp;&nbsp;<button class="btn btn-warning" style="margin-top: 0px; margin-bottom: 0px;"><strong>'.$rank_data['group_volume'].'</strong></button> </strong>
+							<strong>Your Rank is: &nbsp;&nbsp;<button class="btn btn-warning" style="margin-top: 0px; margin-bottom: 0px;"><strong>' . $rank_data['current_rank'] . '</strong></button> &nbsp;&nbsp;&nbsp;<img style="margin-bottom:5px;" width="40" src="/media/images/' . $rank_data['current_rank_image'] . '" /> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Paid Referrals: &nbsp;&nbsp;<button class="btn btn-warning" style="margin-top: 0px; margin-bottom: 0px;"><strong>' . $rank_data['paid_referrals'] . '</strong></button>  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Personal Volume: &nbsp;&nbsp;<button class="btn btn-warning" style="margin-top: 0px; margin-bottom: 0px;"><strong>' . $rank_data['personal_volume'] . '</strong></button>   
+							<!-- &nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Group Volume: &nbsp;&nbsp;<button class="btn btn-warning" style="margin-top: 0px; margin-bottom: 0px;"><strong>' . $rank_data['group_volume'] . '</strong></button> -->
+							</strong>
 						 </div>
 					  </div>
 				   </div>
