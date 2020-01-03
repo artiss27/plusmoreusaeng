@@ -12,9 +12,9 @@
          </a>
          {include file='breadcrumb.tpl'}            
          <h2 class="font-light m-b-xs">
-            Social Network Ads
+            Publicidades Para Tus Redes Sociales
          </h2>
-         <h5>Use these ads as pictures on your social network.</small><br><br><br><h5>Instructions</h5><small>• Right-click on the image with your mouse to open menu.<br>• Copy or save the image in your computer as a photo. <br>• Open your social network account.<br>• Download the picture into your Facebook/Instagram/Twitter account as you would do a normal photo.<br>• Add your referral link together with your member's name or ID.<br> • Share these ads on your network.
+         <h5>Utiliza estos anuncios o imágenes en tu red sociales e incrementa tus referidos.</small><br><br><br><h5>Instrucciones</h5><small>• Haga clic derecho en la imagen con el mouse para abrir el menú.<br>• Copia o guarda la imagen en tu computadora como una foto. <br>• Entra a tu cuenta de red social favorita.<br>• Descarga la imagen en tu cuenta de Facebook / Instagram como si fuera una foto normal.<br>• Agregue tu URL de referir junto con tu nombre o ID de su miembro.<br> • Comparte y ganas ayudando a tus referidos a conseguir mas.
       </div>
    </div>
 </div>

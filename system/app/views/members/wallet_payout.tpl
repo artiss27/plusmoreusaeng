@@ -12,9 +12,9 @@
          </a>
          {include file='breadcrumb.tpl'}            
          <h2 class="font-light m-b-xs">
-          Commissions Account / <font color="green">Cuenta de Comisiones </font>
+          Ordenes de tus Referidos / <font color="green">Referral Orders </font>
          </h2>
-         <small>Account balance from earned commissions / <font color="green">Balance de tus comisiones ganada</font></small>
+         <small>Comisiones Ganadas / <font color="green">Earned Commissions</font></small>
       </div>
    </div>
 </div>
@@ -34,8 +34,8 @@
             <br />
             {/foreach}  
             <div class="main pagesize">
-               <!-- *** mainpage layout *** -->
-<h3>Balance Disponible / <font color="green">Available Balance</font> <strong>{$lang.monetary} {$balance}</strong></h3> <br />
+               <!-- *** mainpage layout *** 
+<h3>Balance Disponible / <font color="green">Available Balance</font> <strong>{$lang.monetary} {$balance}</strong></h3> --><br />
                <div class="main-wrap">
                   <div class="content-box">
                      <div class="box-body">
@@ -51,8 +51,8 @@
                                  <tr>
 	                                 <th>Trasaction ID/ <font color="green">Codigo de Transaccion</font></th>
                                     <th> Fecha / <font color="green">Date</font></th>
-                                    <th>Pago /<font color="green">Payment</font></th>
-                                    <th>Servicio Obtenido /<font color="green">Serviced Received</font></th>
+                                    <th>Comision/<font color="green">Commission</font></th>
+                                    <th>Numero de Recibo/<font color="green">Invoice Number</font></th>
                                  </tr>
                               </thead>
                               <tbody>
@@ -64,12 +64,10 @@
                                  {foreach key=obj item=name from=$list}                
                                  <tr>
                                  	<td>
-transaction ID
-14/5000
-Codigo de transacción/<font color="green">{$name.transaction_id}</font></td>
-                                    <td>Fecha/<font color="green">{$name.date}</font></td>
-                                    <td>Cantidad/<font color="green">{$lang.monetary} {$name.amount}</font></td>
-                                    <td>Descripcion/<font color="green">{$name.description}</font></td>
+<font color="green">{$name.transaction_id}</font></td>
+                                    <td>{$name.date}</td>
+                                    <td><font color="green">{$lang.monetary} {$name.amount}</font></td>
+                                    <td><font color="green">{$name.description}</font></td>
                                  </tr>
                                  {/foreach}			     
                               {/if}   

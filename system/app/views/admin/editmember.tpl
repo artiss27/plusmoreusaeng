@@ -360,7 +360,15 @@
          </div>
       </div>
    </div>
-</div> 
+</div>
+  <style>
+    ol#notelist {
+      max-height: 200px;
+      overflow: auto;
+      border: 1px solid #e4e5e7;
+      border-radius: 5px;
+    }
+  </style>
          
 {include file='footer_scripts.tpl'}
        <script >

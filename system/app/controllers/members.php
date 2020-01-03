@@ -137,6 +137,7 @@ class Members_Controller extends iMVC_Controller
         $this->smarty->assign("sett", $sett);
         $this->smarty->assign("memberships", $memberships);
         $this->smarty->assign("lang", $lang);
+        $this->smarty->assign("balance15percent", CoreHelp::getSession('balance') * 0.15);
 		CoreHelp::setSession('payout_balance', $wallet_payout);
         CoreHelp::setSession('name', $profile['first_name'] . ' ' . $profile['last_name']);
         CoreHelp::setSession('username', $profile['username']);

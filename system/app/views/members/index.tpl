@@ -30,7 +30,7 @@
    <div class="row">
       <div class="col-lg-12 text-center m-t-md"><img src="/media/images/PMUhighlighted.png" alt="PlusMoreUsa" style="width:200px;height:150px;"><br><br>
        
-         <p><font size="6" color="#1a51b6">Bienvenido A Tu BackOffice</font> <br> <font size="5" color="green">Welcome To Your BackOffice</font> <br> <font size="6" color="black">{$smarty.session.name}</font>
+         <p><font size="5" color="black">{$smarty.session.name}</font><br><font size="4" color="#1a51b6">Bienvenido al Clubhouse Virtual</font> <br> <font size="3" color="green">Welcome to The Virtual Clubhouse</font>
          </p>
       </div>
       
@@ -54,7 +54,7 @@
          </div>
       </div>
       
-   {$hooks->do_action('extra_dashboard_head')}
+   
       
       <div class="hpanel forum-box">
          <div class="panel-heading">
@@ -115,10 +115,10 @@
                               <td><a href="/members/profile">{$smarty.session.username}</a></td>
                            </tr>
                            <tr>
-                              <td>
+                              <!--<td>
                                  <span class="text-info font-bold">Tu Membresia<br><font size="2" color="green">Your Membership</font></span>
                               </td>
-                              <td><a href="/members/upgrademembership">{$membership|replace:"_":" "}</a></td>
+                              <td><a href="/members/upgrademembership">{$membership|replace:"_":" "}</a></td>-->
                            </tr>
                            <tr>
                               <td>
@@ -152,19 +152,19 @@
                         <tbody>
                            <tr>
                               <td>
-                                 <span class="text-info font-bold">Tus Invitados<br><font size="2" color="green">Your Guests</font></span>
+                                 <span class="text-info font-bold">Total de Referidos<br><font size="2" color="green">Total of Referrals</font></span>
                               </td>
                               <td><a href="/members/referrers">{$total_sponsored}</a></td>
                            </tr>
                            <tr>
                               <td>
-                                 <span class="text-info font-bold">Invitados Pagados<br><font size="2" color="green">Paid Guests</font></span>
+                                 <span class="text-info font-bold">Referidos Con Servicios<br><font size="2" color="green">Referrals With Services</font></span>
                               </td>
                               <td><a href="/members/referrers">{$total_paid}</a></td>
                            </tr>
                            <tr>
                               <td>
-                                 <span class="text-info font-bold">Invitados Pendientes <br><font size="2" color="green">Pending Guests</font></span>
+                                 <span class="text-info font-bold">Referidos Sin Servicios <br><font size="2" color="green">Referrals Without Services</font></span>
                               </td>
                               <td><a href="/members/pendingreferrers">{$total_sponsored - $total_paid}</a></td>
                            </tr>
@@ -184,9 +184,9 @@
             <div class="hpanel hred">
                <div class="panel-heading">
                   <div class="panel-tools">
-                     <a class="showhide"><i class="fa fa-chevron-up"></i></a>
+                   <a class="showhide"><i class="fa fa-chevron-up"></i></a>
                   </div>
-                TU DINERO <br> <font size="2" color="green">Your Money</font>
+                COMISIONES <br> <font size="2" color="green">Commissions</font>
                </div>
                <div class="panel-body">
                   <div class="table-responsive">
@@ -196,32 +196,33 @@
                               <td>
                                  <span class="text-info font-bold">Comisiones<br><font size="2" color="green">Comissions</font></span>
                               </td>
-                              <td><a href="/members/depositwallet">{$lang.monetary} {$wallet_deposit}</a></td>
+                              <td><a href="/members/depositwallet"><!--{$lang.monetary} {$wallet_deposit}--></a></td>
                            </tr>
                           <!-- <tr>
                               <td>
                                  <span class="text-info font-bold">Referral Account</span>
                               </td>
-                              <td><a href="/members/payoutwallet">{$lang.monetary} {$wallet_payout|number_format:2:'.':''}</a></td>
+                              <td><a href="/members/payoutwallet">
+{$lang.monetary} {$wallet_payout|number_format:2:'.':''}</a></td>
                            </tr>-->                           
                            {$hooks->do_action('extra_wallets_dashboard')}
                            <tr>
                               <td>
                                  <span class="text-info font-bold">Retiros Pendientes <br><font size="2" color="green">Pending Withdrawals</font></span>
                               </td>
-                              <td><a href="/members/withdrawals">{$lang.monetary} {$pending_withdrawal}</a></td>
+                              <td><a href="/members/withdrawals"><!--{$lang.monetary} {$pending_withdrawal}--></a></td>
                            </tr>
                            <tr>
                               <td>
                                  <span class="text-info font-bold">Retiros Completados<br><font size="2" color="green">Completed Withdrawals</font></span>
                               </td>
-                              <td><a href="/members/withdrawals">{$lang.monetary} {$money_withdrawed}</a></td>
+                              <td><a href="/members/withdrawals"><!--{$lang.monetary} {$money_withdrawed}--></a></td>
                            </tr>
                            <tr>
                               <td>
                                  <span class="text-info font-bold"> Commisiones Ganadas Total<br><font size="2" color="green">Total Earned Comissions</font></span>
                               </td>
-                              <td>{$lang.monetary} {$money_earned|number_format:2:'.':''}</td>
+                              <td><!--{$lang.monetary} {$money_earned|number_format:2:'.':''}</td>
                            </tr>
                         <!--   <tr>
                               <td>
@@ -236,7 +237,7 @@
             </div>
          </div>
       </div>
-      <div class="row">
+  <div class="row">
          <div class="col-md-3">
             <div class="hpanel hblue">
                <div class="panel-heading">
@@ -251,27 +252,27 @@
                         <tbody>
                            <tr>
                               <td>
-                                 <span class="text-info font-bold">Invitados Pagados<br><font size="2" color="green">Paid Guests</font></span>
+                                 <span class="text-info font-bold">Referidos Con Servicios<br><font size="2" color="green">Referrals With Services</font></span>
                               </td>
                               <td>{$today.paid_referrers}</td>
                            </tr>
                            <tr>
                               <td>
-                                 <span class="text-info font-bold">Unpaid Guests<br><font size="2" color="green">Invitados No Pagados</font></span>
+                                 <span class="text-info font-bold">Referidos Sin Servicios<br><font size="2" color="green">Referrals Without Services</font></span>
                               </td>
                               <td>{$today.unpaid_referrers}</td>
                            </tr>
                            <tr>
                               <td>
-                                 <span class="text-info font-bold">URS Hits<br><font size="2" color="green">Visitas por tu Enlance</font></font></span>
+                                 <span class="text-info font-bold">Visitas por tu URL<br><font size="2" color="green">URL Hits</font></font></span>
                               </td>
                               <td>{$today.referral_url_hits}</td>
                            </tr>
                            <tr>
-                              <td>
+                             <!-- <td>
                                  <span class="text-info font-bold">Money Earned <br><font size="2" color="green">Dinero Ganado</font></span>
                               </td>
-                              <td>{$lang.monetary}  {$today.money_earned}</td>
+                              <td>{$lang.monetary}  {$today.money_earned}</td>-->
                            </tr>
                            {$hooks->do_action('today_stats')}
                         </tbody>
@@ -294,28 +295,28 @@
                         <tbody>
                            <tr>
                               <td>
-                                 <span class="text-info font-bold">Invitados Pagados<br><font size="2" color="green">Paid Guests</font>
+                                 <span class="text-info font-bold">Referidos Con Servicios<br><font size="2" color="green">Referrals With Services</font>
 </span>
                               </td>
                               <td>{$yesterday.paid_referrers}</td>
                            </tr>
                            <tr>
                               <td>
-                                 <span class="text-info font-bold">Unpaid Guests<br><font size="2" color="green">Invitados No Pagados</font></span>
+                                 <span class="text-info font-bold">Referidos Sin Servicios<br><font size="2" color="green">Referrals Without Services</font></span>
                               </td>
                               <td>{$yesterday.unpaid_referrers}</td>
                            </tr>
                            <tr>
                               <td>
-                                 <span class="text-info font-bold">URS Hits<br><font size="2" color="green">Visitas por tu Enlance</font></span>
+                                 <span class="text-info font-bold">Visitas por tu URL<br><font size="2" color="green">URL Hits</font></span>
                               </td>
                               <td>{$yesterday.referral_url_hits}</td>
                            </tr>
                            <tr>
-                              <td>
-                                 <span class="text-info font-bold">URS Hits<br><font size="2" color="green">Visitas por tu Enlance</font></span>
+                              <!--<td>
+                                 <span class="text-info font-bold">URL Hits<br><font size="2" color="green">URL Hits</font></span>
                               </td>
-                              <td>{$lang.monetary}  {$yesterday.money_earned}</td>
+                              <td>{$lang.monetary}  {$yesterday.money_earned}</td>-->
                            </tr>
                            {$hooks->do_action('yesterday_stats')}
                         </tbody>
@@ -338,27 +339,27 @@
                         <tbody>
                            <tr>
                               <td>
-                                 <span class="text-info font-bold">Paid Guests<br><font size="2" color="green">Invitados Pagados</font></span>
+                                 <span class="text-info font-bold">Referidos Con Servicios<br><font size="2" color="green">Referrals With Services</font></span>
                               </td>
                               <td>{$this_week.paid_referrers}</td>
                            </tr>
                            <tr>
                               <td>
-                                 <span class="text-info font-bold">Unpaid Guests<br><font size="2" color="green">Invitados No Pagados</font></span>
+                                 <span class="text-info font-bold">Referidos Sin Servicios<br><font size="2" color="green">Referrals Without Services</font></span>
                               </td>
                               <td>{$this_week.unpaid_referrers}</td>
                            </tr>
                            <tr>
                               <td>
-                                 <span class="text-info font-bold">URS Hits<br><font size="2" color="green">Visitas por tu Enlance</font></span>
+                                 <span class="text-info font-bold">Visitas por tu URL <br><font size="2" color="green">URL Hits</font></span>
                               </td>
                               <td>{$this_week.referral_url_hits}</td>
                            </tr>
                            <tr>
-                              <td>
-                                 <span class="text-info font-bold">URS Hits<br><font size="2" color="green">Visitas por tu Enlance</font></span>
+                              <!--<td>
+                                 <span class="text-info font-bold">Visitas por tu URL<br><font size="2" color="green">URL Hits</font></span>
                               </td>
-                              <td>{$lang.monetary}  {$this_week.money_earned}</td>
+                              <td>{$lang.monetary}  {$this_week.money_earned}</td>-->
                            </tr>
                            {$hooks->do_action('this_week_stats')}
                         </tbody>
@@ -381,27 +382,27 @@
                         <tbody>
                            <tr>
                               <td>
-                                 <span class="text-info font-bold">Paid Guests<br><font size="2" color="green">Invitados Pagados</font></span>
+                                 <span class="text-info font-bold">Referidos Con Servicios<br><font size="2" color="green">Referrals With Services</font></span>
                               </td>
                               <td>{$last_week.paid_referrers}</td>
                            </tr>
                            <tr>
                               <td>
-                                 <span class="text-info font-bold">Unpaid Guests<br><font size="2" color="green">Invitados No Pagados</font></span>
+                                 <span class="text-info font-bold">Referidos Sin Servicios<br><font size="2" color="green">Referrals Without Services</font></span>
                               </td>
                               <td>{$last_week.unpaid_referrers}</td>
                            </tr>
                            <tr>
                               <td>
-                                 <span class="text-info font-bold">URS Hits<br><font size="2" color="green">Visitas por tu Enlance</font></span>
+                                 <span class="text-info font-bold">Visitas por tu URL<br><font size="2" color="green">URL Hits</font></span>
                               </td>
                               <td>{$last_week.referral_url_hits}</td>
                            </tr>
                            <tr>
-                              <td>
-                                 <span class="text-info font-bold">URS Hits<br><font size="2" color="green">Visitas por tu Enlance</font></span>
-                              </td>
-                              <td>{$lang.monetary}  {$last_week.money_earned}</td>
+                              <!--<td>
+                                 <span class="text-info font-bold">Visitas por tu URL<br><font size="2" color="green">URL Hits</font></span>
+                             </td>
+                              <td>{$lang.monetary}  {$last_week.money_earned}</td>-->
                            </tr>
                            {$hooks->do_action('last_week_stats')}
                         </tbody>
@@ -427,27 +428,27 @@
                         <tbody>
                            <tr>
                               <td>
-                                 <span class="text-info font-bold">Paid Guests<br><font size="2" color="green">Invitados Pagados</font></span>
+                                 <span class="text-info font-bold">Referidos Con Servicios<br><font size="2" color="green">Referrals With Services</font></span>
                               </td>
                               <td>{$this_month.paid_referrers}</td>
                            </tr>
                            <tr>
                               <td>
-                                 <span class="text-info font-bold">Unpaid Guests<br><font size="2" color="green">Invitados No Pagados</font></span>
+                                 <span class="text-info font-bold">Referidos Sin Servicios<br><font size="2" color="green">Referrals Without Services</font></span>
                               </td>
                               <td>{$this_month.unpaid_referrers}</td>
                            </tr>
                            <tr>
                               <td>
-                                 <span class="text-info font-bold">URS Hits<br><font size="2" color="green">Visitas por tu Enlance</font></span>
+                                 <span class="text-info font-bold">Visitas por tu URL<br><font size="2" color="green">URL Hits</font></span>
                               </td>
                               <td>{$this_month.referral_url_hits}</td>
                            </tr>
                            <tr>
                               <td>
-                                 <span class="text-info font-bold">URS Hits<br><font size="2" color="green">Visitas por tu Enlance</font></span>
+                                <!-- <span class="text-info font-bold">Visitas por tu URL<br><font size="2" color="green">URL Hits</font></span>
                               </td>
-                              <td>{$lang.monetary}  {$this_month.money_earned}</td>
+                              <td>{$lang.monetary}  {$this_month.money_earned}</td>-->
                            </tr>
                            {$hooks->do_action('this_month_stats')}
                         </tbody>
@@ -470,27 +471,27 @@
                         <tbody>
                            <tr>
                               <td>
-                                 <span class="text-info font-bold">Paid Guests<br><font size="2" color="green">Invitados Pagados</font></span>
+                                 <span class="text-info font-bold">Referidos Con Servicios<br><font size="2" color="green">Referrals With Services</font></span>
                               </td>
                               <td>{$last_month.paid_referrers}</td>
                            </tr>
                            <tr>
                               <td>
-                                 <span class="text-info font-bold">Unpaid Guests<br><font size="2" color="green">Invitados No Pagados</font></span>
+                                 <span class="text-info font-bold">Referidos Sin Servicios<br><font size="2" color="green">Referrals Without Services</font></span>
                               </td>
                               <td>{$last_month.unpaid_referrers}</td>
                            </tr>
                            <tr>
                               <td>
-                                 <span class="text-info font-bold">URS Hits<br><font size="2" color="green">Visitas por tu Enlance</font></span>
+                                 <span class="text-info font-bold">Visitas por tu URL<br><font size="2" color="green">URL Hits</font></span>
                               </td>
                               <td>{$last_month.referral_url_hits}</td>
                            </tr>
                            <tr>
-                              <td>
-                                 <span class="text-info font-bold">URS Hits<br><font size="2" color="green">Visitas por tu Enlance</font></span>
+                              <!--<td>
+                                 <span class="text-info font-bold">Visitas por tu URL<br><font size="2" color="green">URL Hits</font></span>
                               </td>
-                              <td>{$lang.monetary}  {$last_month.money_earned}</td>
+                              <td>{$lang.monetary}  {$last_month.money_earned}</td>-->
                            </tr>
                            {$hooks->do_action('last_month_stats')}
                         </tbody>
@@ -513,27 +514,27 @@
                         <tbody>
                            <tr>
                               <td>
-                                 <span class="text-info font-bold">Paid Guests<br><font size="2" color="green">Invitados Pagados</font></span>
+                                 <span class="text-info font-bold">Referidos Con Servicios<br><font size="2" color="green">Referrals With Services</font></span>
                               </td>
                               <td>{$last_six_months.paid_referrers}</td>
                            </tr>
                            <tr>
                               <td>
-                                 <span class="text-info font-bold">Unpaid Guests<br><font size="2" color="green">Invitados No Pagados</font></span>
+                                 <span class="text-info font-bold">Referidos Sin Servicios<br><font size="2" color="green">Referrals Without Services</font></span>
                               </td>
                               <td>{$last_six_months.unpaid_referrers}</td>
                            </tr>
                            <tr>
                               <td>
-                                 <span class="text-info font-bold">URS Hits<br><font size="2" color="green">Visitas por tu Enlance</font></span>
+                                 <span class="text-info font-bold">Visitas por tu URL<br><font size="2" color="green">URL Hits</font></span>
                               </td>
                               <td>{$last_six_months.referral_url_hits}</td>
                            </tr>
                            <tr>
-                              <td>
-                                 <span class="text-info font-bold">URS Hits<br><font size="2" color="green">Visitas por tu Enlance</font></span>
+                            <!--  <td>
+                                 <span class="text-info font-bold">Visitas por tu URL<br><font size="2" color="green">URL Hits</font></span>
                               </td>
-                              <td>{$lang.monetary}  {$last_six_months.money_earned}</td>
+                              <td>{$lang.monetary}  {$last_six_months.money_earned}</td>-->
                            </tr>
                            {$hooks->do_action('last_six_months_stats')}
                         </tbody>
@@ -556,27 +557,27 @@
                         <tbody>
                            <tr>
                               <td>
-                                 <span class="text-info font-bold">Paid Guests<br><font size="2" color="green">Invitados Pagados</font></span>
+                                 <span class="text-info font-bold">Referidos Con Servicios<br><font size="2" color="green">Referrals With Services</font></span>
                               </td>
                               <td>{$last_year.paid_referrers}</td>
                            </tr>
                            <tr>
                               <td>
-                                 <span class="text-info font-bold">Unpaid Guests<br><font size="2" color="green">Invitados No Pagados</font></span>
+                                 <span class="text-info font-bold">Referidos Sin Servicios<br><font size="2" color="green">Referrals Without Services</font></span>
                               </td>
                               <td>{$last_year.unpaid_referrers}</td>
                            </tr>
                            <tr>
                               <td>
-                                 <span class="text-info font-bold">URS Hits<br><font size="2" color="green">Visitas por tu Enlance</font></span>
+                                 <span class="text-info font-bold">Visitas por tu URL<br><font size="2" color="green">URL Hits</font></span>
                               </td>
                               <td>{$last_year.referral_url_hits}</td>
                            </tr>
                            <tr>
-                              <td>
-                                 <span class="text-info font-bold">URS Hits<br><font size="2" color="green">Visitas por tu Enlance</font></span>
+                             <!-- <td>
+                                 <span class="text-info font-bold">Visitas por tu URL<br><font size="2" color="green">URL Hits</font></span>
                               </td>
-                              <td>{$lang.monetary}  {$last_year.money_earned}</td>
+                              <td>{$lang.monetary}  {$last_year.money_earned}</td>-->
                            </tr>
                            {$hooks->do_action('last_year_stats')}
                         </tbody>

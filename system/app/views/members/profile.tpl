@@ -144,7 +144,7 @@
                             <div class="bar"></div>
                             <div class="percent">0%</div>
                           </div>
-                          <div id="imgChange"><span>Change/<font color="yellow">Cambiar</font></span>
+                          <div id="imgChange"><span>Cambiar/<font color="yellow">Change</font></span>
                             <input type="file" accept="image/*" name="image_upload_file" id="image_upload_file">
                           </div>
                         </div>
@@ -157,27 +157,27 @@
                            <form role="form" id="form" method="post">
                               <fieldset>
                                  <legend>Contacto Personal / <font color="green">Personal Information</font></legend>
-                                 <div class="form-group">                                      
-                                    <label for="name">Primer Nombre / <font color="green">First Name</font></label>
+<div class="form-group">
+                                    <div class="form-group">  
+                                       <label for="name">Usuario / <font color="green">User: </font></label>
+                                       <font color="red"><strong>{$profile.username}</strong></font>
+                                   </div>
+                                 <div class="form-group">                                                      <label for="name">Primer Nombre / <font color="green">First Name</font></label>
                                     <input type="text" name="firstName" value="{$profile.first_name}" class="form-control form-half" />
                                  </div>
                                  <div class="form-group">  
-                                    <label for="name"><br>Apellido / <font color="green">Last Name</font></label>
+                                    <label for="name">Apellido / <font color="green">Last Name</font></label>
                                     <input type="text" name="lastName" value="{$profile.last_name}"  class="form-control form-half" />
                                  </div>
                                  <div class="form-group">  
                                     <label for="name">Correo Electronico / <font color="green">Email</font></label>
                                     <input type="text" name="email" value="{$profile.email}"  class="form-control form-half" />
                                  </div>
-                              </fieldset>
-                              <fieldset>
-                                 <legend>Acceso a tu Cuenta / <font color="green">Account Access</font>
-                                 </legend>
-                                 <div class="form-group">
-                                    <div class="form-group">  
-                                       <label for="name">Usuario: / <font color="green">User: </font></label>
-                                       {$profile.username}
-                                    </div>
+
+
+                             
+                                 
+                                 
                                     <div class="form-group">  <label for="name"></label>
                                        &nbsp;&nbsp;&nbsp;<a href="/members/resetpassword" class="btn btn-sm btn-primary m-t-n-xs">Cambiar Contrase&ntilde;a /</font> <font color="yellow">Change Password</font></a>
                                     </div>
@@ -215,20 +215,17 @@
                                        <input type="text" name="phone" value="{$profile.phone}"  class="form-control form-half"  />
                                     </div>
                                  </div>
-                              </fieldset>
-                              <fieldset>
-                                <!-- <legend>Cuenta  / <font color="green">Informacion Para Pagos Y Depositos </font>
-                                 </legend>
+                              
                                  <div class="form-group">  
-                                    <label for="select1">Withdrawal Processor / <font color="green">Procesador de Pagos y Retiros</font></label> 
+                                    <label for="select1">Cuenta Para Recibir Pagos / <font color="green">Account to Get Payments</font></label> 
                                     <select size="1" id="select1" name="processor" class="form-control form-half">
                                     {foreach key=obj item=name from=$processors}
                                     <option value="{$name.processor_id}" {if $profile.processor eq "{$name.processor_id}"}selected="selected"{/if}>{$name.name}</option>
                                     {/foreach}
                                     </select>
-                                 </div>-->
+                                 </div>
                           <div class="form-group">  
-                                    <label for="name">Cuenta de Zelle (Numero de Celular/Email) / <font color="green">Zelle Account (Cellphone Number/Email)</font></label> 
+                                    <label for="name">Usar Email o Numero del Mobil / <font color="green">Use Email or Cellphone Number</font></label> 
                                     <input type="text" name="account_id" value="{$profile.account_id}" class="form-control form-half" />
                                  </div>
                                  
